@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+	<link rel="stylesheet" href="material.brown-light_green.min.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+	<title>Environmentally Themed Ipsum Generator</title>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+	<script type="text/javascript" src="script.js"></script>
+	<div class="mdl-layout--fixed-header" style="height: unset">
+	  <header class="mdl-layout__header">
+	  	<div style="white-space: nowrap;" class="mdl-layout__header-row">
+	      <span class="mdl-layout__title">Environmental Ipsum <img width="32" height="32" style="margin-left:75%" src="globe.gif"></span>
+	  </div>
+	  </header>
+	</div>
+	<center>
+		<div class="mainLayout" style="margin: auto;">
+			<form action="#">
+		  <div class="mdl-textfield mdl-js-textfield">
+		    <input id="nP" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
+		    <label class="mdl-textfield__label" for="sample2">Number of Ipsum Paragraphs</label>
+		    <span id="e" class="mdl-textfield__error">Bad input.</span>
+		  </div>
+		</form>
+		<button id="sB" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+		  Ipsum Me!
+		</button>
+		</div>
+
+
+	<div style="margin-top: 27px; visibility: hidden;" class="returnContent">
+		<div class="demo-card-event mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+  	<p id="eI">
+  	</p>
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a data-clipboard-target="#eI" style="color: rgb(66,66,66);
+    background-color: rgb(178,255,89);" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      Copy to Clipboard
+    </a>
+</div>
+	</div>
+	<div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+  <div class="mdl-snackbar__text"></div>
+  <button class="mdl-snackbar__action" type="button"></button>
+</div>
+	</center>
+</body>
+</html>
