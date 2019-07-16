@@ -18,9 +18,9 @@ function generateParagraphs(Array $markov, int $numParagraphs, bool $cli, $lineB
 		for ($j=0; $j <= $numSentences; $j++) { 
 
 			if($i == 0)
-				$sentence = $markov[mt_rand(0,$s)];
+				$sentence = $markov[mt_rand(1,$s)];
 			else
-				$sentence = " ".$markov[mt_rand(0,$s)]; //prepend a space for all other leading sentences.
+				$sentence = " ".$markov[mt_rand(1,$s)]; //prepend a space for all other leading sentences.
 
 			$paragraph .= str_replace("\n", " ", $sentence);
 		}
@@ -47,9 +47,26 @@ function checkRange($r):bool //while I really didn't want to add a function call
 $m['request']  = false;
 $r = json_encode($m);
 
-if(array_key_exists('n',$_POST)) {
+if(array_key_exists('n', $_POST)) {
 
-	$f = file("clean_markov2.txt"); //just use file instead of file_get_contents + explode.
+	/** Executes about x2 as fast, and uses roughly 1/3 less memory **/
+	$sizeOfFile = filesize("clean_markov2.txt");
+	$beginOffset = mt_rand(0, $sizeOfFile);
+	$fH = fopen("clean_markov2.txt", "r");
+	fseek($fH, $beginOffset, SEEK_SET);
+
+	$f = explode("\n", stream_get_contents($fH));
+
+	/** 
+
+		The file() and explode() methods have similiar runtimes / mem usage, which is to be expected I guess.
+		I'll have to take a look at the source, but I bet they're handled the same way under the hood, at least for default line delims. 
+	
+	$f = file("clean_markov2.txt"); 
+
+	$f = explode("\n", file_get_contents("clean_markov2.txt"));
+
+	**/
 
 	$v = intval($_POST['n']);
 
